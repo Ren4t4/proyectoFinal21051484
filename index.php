@@ -1,22 +1,6 @@
-<?php
-// Arreglo para almacenar calificaciones (esto se borra al recargar, solo demostrativo)
-$registros = [];
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST["nombre"] ?? '';
-    $materia = $_POST["materia"] ?? '';
-    $calificacion = $_POST["calificacion"] ?? '';
-
-    // Validación básica
-    if ($nombre && $materia && is_numeric($calificacion)) {
-        // Guardamos temporalmente los datos (en la práctica se usaría base de datos)
-        $registros[] = [
-            "nombre" => $nombre,
-            "materia" => $materia,
-            "calificacion" => $calificacion
-        ];
-    }
-}
+// Consultamos los datos desde la tabla correcta
+$sql = "SELECT nombre, materia, calificacion FROM registros";
+$resultado = $conexion->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <h1>Registrar Calificación de Estudiante</h1>
 
-    <form method="post">
+    <form method="post" action="guardar.php">
         <label>Nombre del Estudiante:</label><br>
         <input type="text" name="nombre" required><br><br>
 
@@ -41,22 +25,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Guardar</button>
     </form>
 
-    <?php if (!empty($registros)): ?>
-        <h2>Registro Capturado:</h2>
+    <?php if ($resultado && $resultado->num_rows > 0): ?>
+        <h2>Registros Guardados:</h2>
         <table border="1" cellpadding="5">
             <tr>
                 <th>Nombre</th>
                 <th>Materia</th>
                 <th>Calificación</th>
             </tr>
-            <?php foreach ($registros as $r): ?>
+            <?php while ($row = $resultado->fetch_assoc()): ?>
                 <tr>
-                    <td><?= htmlspecialchars($r['nombre']) ?></td>
-                    <td><?= htmlspecialchars($r['materia']) ?></td>
-                    <td><?= htmlspecialchars($r['calificacion']) ?></td>
+                    <td><?= htmlspecialchars($row['nombre']) ?></td>
+                    <td><?= htmlspecialchars($row['materia']) ?></td>
+                    <td><?= htmlspecialchars($row['calificacion']) ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
         </table>
+    <?php else: ?>
+        <p>No hay registros aún.</p>
     <?php endif; ?>
+
 </body>
 </html>
