@@ -6,7 +6,7 @@ $contrasena = "Pi-21051484";
 $base_datos = "calificaciones";
 
 // Crear conexión con SSL
-$conexion = new mysqli($host, $usuario, $contrasena, $base_datos, 3306, NULL, MYSQLI_CLIENT_SSL);
+$conexion = new mysqli($host, $usuario, $contrasena, $base_datos, 3306, MYSQLI_CLIENT_SSL);
 
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
