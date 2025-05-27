@@ -1,4 +1,3 @@
-// Consultamos los datos desde la tabla correcta
 $sql = "SELECT nombre, materia, calificacion FROM registros";
 $resultado = $conexion->query($sql);
 ?>
