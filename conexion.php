@@ -1,22 +1,17 @@
 <?php
-require_once "conexion.php";
+$host = "40.118.247.100";  // IP privada del servidor MySQL
+$usuario = "rootits";  // Cambia esto por tu usuario de MySQL
+$contrasena = "rootits1";  // Cambia esto por tu contraseña de MySQL
+$base_datos = "calificaciones";
 
-$nombre = $_POST["nombre"] ?? '';
-$materia = $_POST["materia"] ?? '';
-$calificacion = $_POST["calificacion"] ?? '';
+$host = "sqlserver-210512484.mysql.database.azure.com";
+$usuario = "rootits@sqlserver-210512484";
+$contrasena = "Pi-21051484";
+$base_datos = "calificaciones";
 
-if ($nombre && $materia && is_numeric($calificacion)) {
-    $stmt = $conexion->prepare("INSERT INTO registros (nombre, materia, calificacion) VALUES (?, ?, ?)");
-    $stmt->bind_param("ssi", $nombre, $materia, $calificacion);
-    if ($stmt->execute()) {
-        echo "Registro guardado correctamente.<br><a href='index.php'>Volver</a>";
-    } else {
-        echo "Error al guardar: " . $stmt->error;
-    }
-    $stmt->close();
-} else {
-    echo "Todos los campos son obligatorios.<br><a href='index.php'>Volver</a>";
+$conexion = new mysqli($host, $usuario, $contrasena, $base_datos);
+
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
 }
-
-$conexion->close();
 ?>
