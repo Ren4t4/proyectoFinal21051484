@@ -1,5 +1,5 @@
 <?php
-require_once "conexion.php";
+require_once "conexion.php"; // Conexión segura a Azure con SSL
 
 $nombre = $_POST["nombre"] ?? '';
 $materia = $_POST["materia"] ?? '';
