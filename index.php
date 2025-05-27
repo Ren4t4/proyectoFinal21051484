@@ -1,3 +1,6 @@
+<?php
+//include 'conexion.php';
+
 $sql = "SELECT nombre, materia, calificacion FROM registros";
 $resultado = $conexion->query($sql);
 ?>
