@@ -1,5 +1,5 @@
-<?php
-require_once 'conexion.php'; // Conexión segura a Azure con SSL
+ <?php
+require_once 'conexion.php'; // Incluye conexión segura a Azure
 
 $sql = "SELECT nombre, materia, calificacion FROM registros";
 $resultado = $conexion->query($sql);
@@ -49,4 +49,3 @@ $resultado = $conexion->query($sql);
 
 </body>
 </html>
-
