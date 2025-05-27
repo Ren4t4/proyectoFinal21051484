@@ -1,6 +1,6 @@
 <?php
-$host = "sqlserver-210512484.mysql.database.azure.com";
-$usuario = "rootits@sqlserver-210512484";
+$host = "app-servidor21051484.mysql.database.azure.com";
+$usuario = "app-servidor21051484";
 $contrasena = "Pi-21051484";
 $base_datos = "calificaciones";
 
