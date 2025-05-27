@@ -1,6 +1,7 @@
 <?php
-//include 'conexion.php';
+require_once 'conexion.php'; // Conexión con la BD
 
+// Consultamos los datos desde la tabla correcta
 $sql = "SELECT nombre, materia, calificacion FROM registros";
 $resultado = $conexion->query($sql);
 ?>
