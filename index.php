@@ -1,4 +1,4 @@
-
+<?php
 require_once 'conexion.php'; // Conexión con la BD
 
 // Consultamos los datos desde la tabla correcta
