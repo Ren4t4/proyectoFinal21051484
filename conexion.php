@@ -1,6 +1,6 @@
 <?php
 $host = "app-servidor21051484.mysql.database.azure.com";
-$usuario = "rootits"; // Debe incluir el nombre del servidor
+$usuario = "rootits@app-servidor21051484"; // Debe incluir el nombre del servidor
 $contrasena = "Pi-21051484"; // reemplaza con tu contraseña real
 $base_datos = "calificaciones";
 
